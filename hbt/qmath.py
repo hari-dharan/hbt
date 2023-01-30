@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
-def math_rescale(x, lb=0.001, ub=0.999):
+def qmath_rescale(x, lb=0.001, ub=0.999):
     '''
     Linearly rescale x to min_x and max_x
 
@@ -41,7 +41,7 @@ def math_rescale(x, lb=0.001, ub=0.999):
             x_s = (ub - lb) * (x - np.nanmin(x)) / (np.nanmax(x) - np.nanmin(x)) + lb
         return x_s
 
-def math_rank(x, highlow=1, na_option="bottom"):
+def qmath_rank(x, highlow=1, na_option="bottom"):
     '''
     Rank a series
 
@@ -72,7 +72,7 @@ def math_rank(x, highlow=1, na_option="bottom"):
     
     return x_r
 
-def math_norm(x, method="invnorm"):
+def qmath_norm(x, method="invnorm"):
     '''
     Normalize series
 
@@ -101,9 +101,35 @@ def math_norm(x, method="invnorm"):
     
     return x_n
 
-def EWMA(ts, n=0, lambda_=0.94, na_rm=False):
+def qmath_winsorize(x, winsorize_size=2, winsorize_method="sd", trim=False, ends=("H", "T")):
     '''
-    Exponentially Weighted Moving Average
+    x : vector
+    winsorize_size : str
+        - sd: number of sd
+        - median: number of median bands
+        - prank: rank percentile of the upperbound, lowerbound is mirrored
+        - quantile: quantile of upperbound
+        - huber: keep exact bounds
+    winsorize_method : str
+        - sd: band is sd
+        - median: band is median of abs diff between vec and median
+        - prank: keep the percentile
+        - huber: keep exact bounds
+    trim : bool
+        whether to fill outliers with NA or replace with boundary value
+    ends : can only be within ("H", "T"). H winsorize the head, T winsorize the tail
+    '''
+    pass
+
+def qmath_ma():
+    '''
+    Moving Average Smoothing
+    '''
+    pass
+
+def qmath_ewma(ts, n=0, lambda_=0.94, na_rm=False):
+    '''
+    Exponentially Weighted Moving Average Smoothing
 
     Parameters
     ----------
@@ -130,3 +156,46 @@ def EWMA(ts, n=0, lambda_=0.94, na_rm=False):
     w = [lambda_ ** i for i in range(len(ts) - 1, -1, -1)]
     ewma = ts.dot(w) / sum(w)
     return ewma
+
+def qmath_ewsd():
+    '''
+    Exponential Weighted Standard Deviation
+    '''
+    pass
+
+def qmath_ewcov():
+    '''
+    Exponential Weighted Covariance
+    '''
+    pass
+
+def qmath_holtwinters():
+    '''
+    Holt Winters Smoothing
+    '''
+    pass
+
+def qmath_neutralize():
+    '''
+    Function that takes in dependent and independent variables 
+    and returns residuals of linear regression
+    '''
+    pass
+
+def qmath_pca():
+    '''
+    Principal Components
+    '''
+    pass
+
+def qmath_solve_lp():
+    '''
+    Solve Linear Programming Problem
+    '''
+    pass
+
+def qmath_solve_qp():
+    '''
+    Solve Quadratic Programming Problem
+    '''
+    pass
