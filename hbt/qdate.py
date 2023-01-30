@@ -39,7 +39,7 @@ def freq_to_lag_type(freq, freq_to_lag=True):
     '''
     pass
 
-def date_seq(start="1995-01-01", end=pd.to_datetime("today"), freq="D", interval="N"):
+def qdate_seq(start="1995-01-01", end=pd.to_datetime("today"), freq="D", interval="N"):
     start = pd.to_datetime(start)
     end = pd.to_datetime(end)
 
@@ -70,37 +70,37 @@ def date_seq(start="1995-01-01", end=pd.to_datetime("today"), freq="D", interval
     
     return list(OrderedDict.fromkeys([pd.to_datetime(i.strftime("%Y-%m-%d")) for i in date_vec]))
 
-def date_lag(dates, lag=0, lag_type="D"):
+def qdate_lag(dates, lag=0, lag_type="D"):
     '''
     Lag dates by well known frequency
     '''
     pass
 
-def date_minus_wdays(dates, n=1):
+def qdate_minus_wdays(dates, n=1):
     '''
     Minus n weekdays/business days to each of the dates
     '''
     pass
 
-def date_fdm(dates, weekday_flag=True):
+def qdate_fdm(dates, weekday_flag=True):
     '''
     Get the first day/weekday of the month
     '''
     pass
 
-def date_ldm(dates, lookback=False):
+def qdate_ldm(dates, lookback=False):
     '''
     Get the last weekday of the month
     '''
     pass
 
-def date_eom(dates):
+def qdate_eom(dates):
     '''
     Get the last day of the month
     '''
     pass
 
-def date_ldy(dates, lookback=False):
+def qdate_ldy(dates, lookback=False):
     '''
     Get the last weekday of the year
     '''
