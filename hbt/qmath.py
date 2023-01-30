@@ -95,7 +95,7 @@ def qmath_norm(x, method="invnorm"):
     if method == "sum_abs":
         x_n = x/np.abs(x).sum()
     elif method == "invnorm":
-        x_n = math_rescale(math_rank(x, highlow=1, na_option="bottom"), lb=0.001, ub=0.999).apply(norm.ppf)
+        x_n = qmath_rescale(qmath_rank(x, highlow=1, na_option="bottom"), lb=0.001, ub=0.999).apply(norm.ppf)
     elif method == "zscore":
         x_n = (x - x[~pd.isna(x)].mean()) / np.std(x[~pd.isna(x)], ddof=1)
     
