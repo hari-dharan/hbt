@@ -128,8 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Notebooks
-*.ipynb
-
 # VS Code Settings
 .vscode/
